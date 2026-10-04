@@ -2,6 +2,10 @@
 
 Low-latency ring IMU viewer and gesture-input desktop application for Linux.
 
+**Press down for `0`, flick up for `1`, and double-press to compile the buffered bits.**
+Together, these three ring gestures form a lightweight binary input method. The
+demo below shows an example of entering `ZILO` through this interaction.
+
 ## OpenZilo and ComBodied AI
 
 Zilo Ring is an independent application built with the
