@@ -10,7 +10,9 @@ gesture recognition, and low-friction wearable input.
 
 ## Demo
 
-[Watch the 26-second desktop demo](video_move.mp4)
+[![Zilo Ring live gesture-recognition demo](video_move.gif)](video_move.mp4)
+
+_The preview loops in place. Click it for the full-resolution MP4._
 
 The demo shows the application receiving a ring IMU stream and presenting the
 signal and interaction state in real time.

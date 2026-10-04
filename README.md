@@ -11,6 +11,12 @@ gesture recognition, and wearable input experiments.
 
 See the [project showcase and demo](docs/OPENZILO_SHOWCASE.md).
 
+## Demo
+
+[![Zilo Ring live gesture-recognition demo](docs/video_move.gif)](docs/video_move.mp4)
+
+_The preview loops in place. Click it for the full-resolution MP4._
+
 ## Architecture
 
 - Qt GUI thread for rendering and interaction.
