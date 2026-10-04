@@ -14,9 +14,11 @@ def run_qt(context: Any) -> int:
         ) from exc
 
     from zilo_ring.presentation.qt.shell.main_window import MainWindow
+    from zilo_ring.presentation.qt.theme import ui_font
 
     app = QApplication(sys.argv[:1])
     app.setApplicationName("Zilo Ring")
+    app.setFont(ui_font(10))
     window = MainWindow(context)
     window.show()
     return app.exec()

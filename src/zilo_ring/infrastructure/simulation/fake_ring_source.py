@@ -32,18 +32,23 @@ class FakeRingSource:
             received_ns = time.monotonic_ns()
             for _ in range(5):
                 t = sequence / 100.0
-                roll = math.radians(28.0 * math.sin(t * 1.4))
-                pitch = math.radians(18.0 * math.sin(t * 0.9))
-                accel = Vector3(
-                    -math.sin(pitch),
-                    math.sin(roll) * math.cos(pitch),
-                    math.cos(roll) * math.cos(pitch),
-                )
-                gyro = Vector3(
-                    39.2 * math.cos(t * 1.4),
-                    16.2 * math.cos(t * 0.9),
-                    12.0 * math.sin(t * 0.5),
-                )
+                if t < 2.0:
+                    accel = Vector3(0.0, 0.0, 1.0)
+                    gyro = Vector3(0.0, 0.0, 0.0)
+                else:
+                    motion_t = t - 2.0
+                    roll = math.radians(28.0 * math.sin(motion_t * 1.4))
+                    pitch = math.radians(18.0 * math.sin(motion_t * 0.9))
+                    accel = Vector3(
+                        -math.sin(pitch),
+                        math.sin(roll) * math.cos(pitch),
+                        math.cos(roll) * math.cos(pitch),
+                    )
+                    gyro = Vector3(
+                        39.2 * math.cos(motion_t * 1.4),
+                        16.2 * math.cos(motion_t * 0.9),
+                        12.0 * math.sin(motion_t * 0.5),
+                    )
                 samples.append(
                     IMUSample(
                         sequence=sequence,

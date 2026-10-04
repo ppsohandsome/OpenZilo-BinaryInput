@@ -28,4 +28,5 @@ def test_store_keeps_bounded_history_and_latest_sample() -> None:
     store.ingest(IMUBatch(samples, 100.0, 16.0, 2000.0))
     snapshot = store.snapshot()
     assert [sample.sequence for sample in snapshot.history] == [1, 2]
+    assert [sample.sequence for sample in snapshot.bias_corrected_history] == [1, 2]
     assert snapshot.ring.latest_sample is samples[-1]

@@ -2,7 +2,7 @@
 
 1. Keep the application single-ring unless the user explicitly changes scope.
 2. Preserve dependency direction: presentation -> application -> ports/domain; infrastructure implements ports; bootstrap wires concrete objects.
-3. Qt code must not import the ADVX SDK or Bleak adapter directly.
+3. Qt code must not import the OpenZilo SDK or Bleak adapter directly.
 4. Bluetooth code must not import Qt.
 5. Keep raw IMU values, physical units, device timestamps, receive timestamps, and sequence numbers distinct.
 6. Do not present acceleration integration as real position. The ring has a fixed scene position; only the camera may orbit, pan, or zoom.

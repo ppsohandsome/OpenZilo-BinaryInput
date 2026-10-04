@@ -21,7 +21,7 @@ class ConnectionState(StrEnum):
 @dataclass(frozen=True, slots=True)
 class RingDevice:
     address: str
-    name: str = "Ring Sound"
+    name: str = "OpenZilo Ring"
     battery_percent: int | None = None
     nominal_sample_rate_hz: float | None = None
 

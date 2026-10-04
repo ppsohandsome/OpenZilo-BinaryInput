@@ -3,9 +3,9 @@ from __future__ import annotations
 import time
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget
 
+from zilo_ring.presentation.qt.theme import data_font
 from zilo_ring.state import StoreSnapshot
 
 
@@ -18,7 +18,7 @@ class DiagnosticsPage(QWidget):
         self._last_update_ns = 0
         self.readout = QLabel("No data")
         self.readout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
-        self.readout.setFont(QFont("monospace", 12))
+        self.readout.setFont(data_font(12))
         layout = QVBoxLayout(self)
         layout.addWidget(self.readout)
 

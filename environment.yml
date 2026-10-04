@@ -1,0 +1,12 @@
+name: zilo-ring
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -e ../OpenZilo
+      - -e .[dev]
+variables:
+  PYTHONPATH: ""

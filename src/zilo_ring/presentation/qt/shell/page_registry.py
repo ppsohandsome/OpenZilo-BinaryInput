@@ -11,6 +11,7 @@ from zilo_ring.state import StoreSnapshot
 class AppPage(Protocol):
     page_id: str
     title: str
+    subtitle: str
 
     def refresh(self, snapshot: StoreSnapshot) -> None: ...
 
@@ -19,6 +20,7 @@ class AppPage(Protocol):
 class PageEntry:
     page_id: str
     title: str
+    subtitle: str
     widget: QWidget
 
 
@@ -30,7 +32,12 @@ class PageRegistry:
         page_id = str(getattr(page, "page_id"))
         if any(entry.page_id == page_id for entry in self._entries):
             raise ValueError(f"Duplicate page id: {page_id}")
-        entry = PageEntry(page_id=page_id, title=str(getattr(page, "title")), widget=page)
+        entry = PageEntry(
+            page_id=page_id,
+            title=str(getattr(page, "title")),
+            subtitle=str(getattr(page, "subtitle", "")),
+            widget=page,
+        )
         self._entries.append(entry)
         return entry
 

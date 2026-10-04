@@ -2,5 +2,15 @@
 /.pytest_cache/
 /**/__pycache__/
 *.py[cod]
+*.egg-info/
 *.log
-/.idea/workspace.xml
+/.idea/
+/data/
+/models/*.json
+/models/*.joblib
+/models/*.onnx
+/src/zilo_ring/soarm/
+/tests/unit/test_lerobot_arm_driver.py
+/tests/unit/test_soarm_controller.py
+/.env
+/local.env

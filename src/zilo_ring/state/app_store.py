@@ -3,10 +3,13 @@ from __future__ import annotations
 import threading
 import time
 from collections import deque
+from collections.abc import Callable
 from dataclasses import dataclass, replace
+from typing import Protocol
 
 from zilo_ring.domain import (
     ConnectionState,
+    DetectedAction,
     IMUBatch,
     IMUSample,
     MotionEstimate,
@@ -16,10 +19,22 @@ from zilo_ring.domain import (
 from zilo_ring.processing import ProcessingPipeline, StreamMetrics
 
 
+class LiveRecognizer(Protocol):
+    @property
+    def active(self) -> bool: ...
+
+    def update(self, sample: IMUSample) -> DetectedAction | None: ...
+
+    def reset(self) -> None: ...
+
+
 @dataclass(frozen=True, slots=True)
 class StoreSnapshot:
     ring: RingSnapshot
     history: tuple[IMUSample, ...]
+    bias_corrected_history: tuple[IMUSample, ...]
+    detected_actions: tuple[DetectedAction, ...]
+    recognition_active: bool
 
 
 class AppStore:
@@ -31,10 +46,16 @@ class AppStore:
         processor: ProcessingPipeline,
         history_size: int,
         stale_after_ms: float,
+        recognizer: LiveRecognizer | None = None,
+        on_detected_action: Callable[[DetectedAction], None] | None = None,
     ) -> None:
         self._processor = processor
         self._metrics = StreamMetrics()
         self._history: deque[IMUSample] = deque(maxlen=history_size)
+        self._bias_corrected_history: deque[IMUSample] = deque(maxlen=history_size)
+        self._detected_actions: deque[DetectedAction] = deque(maxlen=32)
+        self._recognizer = recognizer
+        self._on_detected_action = on_detected_action
         self._ring = RingSnapshot()
         self._stale_after_ms = stale_after_ms
         self._lock = threading.Lock()
@@ -51,6 +72,13 @@ class AppStore:
                 latest = sample
                 self._metrics.update(sample)
                 self._history.append(sample)
+                self._bias_corrected_history.append(processed.bias_corrected_sample)
+                if self._recognizer is not None:
+                    action = self._recognizer.update(processed.bias_corrected_sample)
+                    if action is not None:
+                        self._detected_actions.append(action)
+                        if self._on_detected_action is not None:
+                            self._on_detected_action(action)
             if latest is None:
                 return
             self._ring = replace(
@@ -109,6 +137,10 @@ class AppStore:
             self._processor.reset()
             self._metrics.reset()
             self._history.clear()
+            self._bias_corrected_history.clear()
+            self._detected_actions.clear()
+            if self._recognizer is not None:
+                self._recognizer.reset()
             self._ring = replace(
                 self._ring,
                 latest_sample=None,
@@ -129,4 +161,12 @@ class AppStore:
                     state = ConnectionState.STALE
                     message = "IMU data is stale"
                 ring = replace(ring, state=state, message=message, data_age_ms=max(0.0, age_ms))
-            return StoreSnapshot(ring=ring, history=tuple(self._history))
+            return StoreSnapshot(
+                ring=ring,
+                history=tuple(self._history),
+                bias_corrected_history=tuple(self._bias_corrected_history),
+                detected_actions=tuple(self._detected_actions),
+                recognition_active=(
+                    self._recognizer.active if self._recognizer is not None else False
+                ),
+            )
