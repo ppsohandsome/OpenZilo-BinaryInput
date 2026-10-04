@@ -1,4 +1,4 @@
-# Zilo Ring: a ComBodied AI Interaction Prototype
+# Zilo Ring: A ComBodied AI Input Project for OpenZilo
 
 Zilo Ring is an independent Linux desktop application built with the
 [OpenZilo Python SDK](https://github.com/ziloai/OpenZilo). It explores

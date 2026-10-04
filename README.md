@@ -1,4 +1,4 @@
-# Zilo Ring
+# Zilo Ring: A ComBodied AI Input Project for OpenZilo
 
 Low-latency ring IMU viewer and gesture-input desktop application for Linux.
 
