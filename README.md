@@ -95,6 +95,14 @@ bias-corrected gyroscope trace. Set `ZILO_RECOGNITION_LOG_PATH` to override it.
 Rejected attempts appear as gray diagnostic regions but are not accepted as
 `up/down` actions.
 
+## Included model checkpoints
+
+Two lightweight JSON checkpoints are included under `models/` so the gesture
+recognition flow can be explored immediately. They were trained from one
+wearer's private labeled IMU trials and are examples, not general-purpose
+models or accuracy guarantees. The raw capture sessions are intentionally not
+included; retrain with your own gestures before using recognition as input.
+
 ## Tests
 
 ```bash

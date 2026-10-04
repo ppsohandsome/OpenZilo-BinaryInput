@@ -6,9 +6,9 @@
 *.log
 /.idea/
 /data/
-/models/*.json
-/models/*.joblib
-/models/*.onnx
+/models/*
+!/models/gesture_temporal_knn.json
+!/models/up_down_direction.json
 /src/zilo_ring/soarm/
 /tests/unit/test_lerobot_arm_driver.py
 /tests/unit/test_soarm_controller.py

@@ -1,0 +1,38 @@
+{
+  "model_type": "cosine_direction_template",
+  "version": 2,
+  "idle_label": "idle",
+  "rejected_label": "rejected",
+  "rejection": {
+    "min_similarity": 0.9,
+    "min_direction_coherence": 0.5447381212934738
+  },
+  "activity_gate": {
+    "gyro_norm_threshold_dps": 20.0,
+    "smoothing_samples": 5,
+    "min_active_samples": 5,
+    "min_active_duration_s": 0.08,
+    "min_peak_gyro_dps": 100.0,
+    "max_inactive_gap_samples": 5
+  },
+  "templates": {
+    "up": [
+      -0.057770259090523836,
+      -0.7753146784893404,
+      0.6289274572505039
+    ],
+    "down": [
+      -0.0479225030638734,
+      0.9672466503216517,
+      -0.24927364710622218
+    ]
+  },
+  "training_summary": {
+    "published": true,
+    "data_note": "Trained on private labeled IMU trials; raw capture files and source paths are not included.",
+    "trial_counts": {
+      "up": 24,
+      "down": 36
+    }
+  }
+}

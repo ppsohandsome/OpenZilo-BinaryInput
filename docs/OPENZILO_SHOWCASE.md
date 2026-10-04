@@ -68,8 +68,9 @@ start.
 ## Privacy and release hygiene
 
 This repository should never contain real ring MAC addresses, serial numbers,
-CPUIDs, personal recordings, raw capture sessions, recognition logs, or
-private trained-model artifacts. Use placeholder values in screenshots and
+CPUIDs, personal recordings, raw capture sessions, or recognition logs. The
+included checkpoints are curated model artifacts; their training source paths
+and raw trials are not published. Use placeholder values in screenshots and
 examples.
 
 ## Upstream relationship
