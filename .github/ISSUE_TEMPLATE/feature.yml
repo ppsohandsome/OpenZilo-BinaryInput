@@ -1,0 +1,25 @@
+name: New feature
+description: Suggest new functionality
+title: "[Feature] "
+type: Feature
+labels:
+  - enhancement
+
+body:
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview of the feature
+      description: Briefly describe the new feature.
+
+  - type: textarea
+    id: expected-functionality
+    attributes:
+      label: Expected functionality
+      description: Explain how you expect the feature to work.
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add mockups, examples, links, or any other useful context.

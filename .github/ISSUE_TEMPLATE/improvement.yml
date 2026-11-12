@@ -1,0 +1,25 @@
+name: Existing feature improvement
+description: Suggest an improvement to existing functionality
+title: "[Improvement] "
+type: Task
+labels:
+  - enhancement
+
+body:
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview
+      description: Briefly describe the existing functionality that should be improved.
+
+  - type: textarea
+    id: desired-change
+    attributes:
+      label: Desired change
+      description: Explain how you would like the existing functionality to change.
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add mockups, examples, links, or any other useful context.

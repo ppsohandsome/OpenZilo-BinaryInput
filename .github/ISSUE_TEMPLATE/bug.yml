@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a problem with existing functionality
+title: "[Bug] "
+type: Bug
+labels:
+  - bug
+
+body:
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview of the bug
+      description: Briefly describe the problem.
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Explain how the problem can be reproduced.
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add screenshots, logs, or any other useful context.
