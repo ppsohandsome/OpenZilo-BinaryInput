@@ -22,9 +22,15 @@ body:
     attributes:
       label: Expected functionality
       description: Explain how you expect the feature to work.
+      placeholder: |
+        Example:
+        When the user double-presses the ring button, the application should emit a configurable keyboard shortcut.
 
   - type: textarea
     id: additional-information
     attributes:
       label: Additional information
-      description: Add mockups, examples, links, or any other useful context.
+      description: Add supporting videos, documents, diagrams, links, or any other useful context.
+      placeholder: |
+        Example:
+        The feature should behave as described on page 4 of the XX document.
