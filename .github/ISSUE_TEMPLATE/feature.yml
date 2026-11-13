@@ -16,6 +16,9 @@ body:
     attributes:
       label: Overview of the feature
       description: Briefly describe the new feature.
+      placeholder: |
+        Example:
+        The electromagnet component should turn the magnet on or off depending on whether a condition is true or false.
 
   - type: textarea
     id: expected-functionality
