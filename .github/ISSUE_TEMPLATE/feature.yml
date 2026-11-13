@@ -24,7 +24,7 @@ body:
       description: Explain how you expect the feature to work.
       placeholder: |
         Example:
-        The [Electromagnet component](https://github.com/ppsohandsome/OpenZilo-BinaryInput/issues/5) should turn on when the force reaches {force threshold} N, turn off after 1.5 seconds, and turn on again after another 1.5 seconds.
+        The Electromagnet component should turn on when the force reaches {force threshold} N, turn off after 1.5 seconds, and turn on again after another 1.5 seconds.
 
   - type: textarea
     id: additional-information
