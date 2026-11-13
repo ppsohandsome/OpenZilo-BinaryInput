@@ -6,6 +6,11 @@ labels:
   - enhancement
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Title:** Keep `[Feature]` at the beginning of the issue title. Do not delete it.
+
   - type: textarea
     id: overview
     attributes:

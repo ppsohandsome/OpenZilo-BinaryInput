@@ -6,6 +6,11 @@ labels:
   - bug
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Title:** Keep `[Bug]` at the beginning of the issue title. Do not delete it.
+
   - type: textarea
     id: overview
     attributes:
@@ -17,9 +22,33 @@ body:
     attributes:
       label: Steps to reproduce
       description: Explain how the problem can be reproduced.
+      placeholder: |
+        Example:
+        1. Click "Connect".
+        2. Enter the device address.
+        3. The application displays an error.
+
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: Expected result
+      description: Explain what you expected to happen instead.
+      placeholder: |
+        Example:
+        The application should connect to the device and display its input data.
 
   - type: textarea
     id: additional-information
     attributes:
       label: Additional information
-      description: Add screenshots, logs, or any other useful context.
+      description: Include the complete command you ran and its full error output. You may also add screenshots or other useful context.
+      placeholder: |
+        Example:
+
+        Command:
+        python main.py
+
+        Complete output:
+        Traceback (most recent call last):
+          ...
+        Error: ...
