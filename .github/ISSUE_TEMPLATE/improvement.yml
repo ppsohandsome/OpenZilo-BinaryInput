@@ -16,12 +16,18 @@ body:
     attributes:
       label: Overview
       description: Briefly describe the existing functionality that should be improved.
+      placeholder: |
+        Example:
+        Data transmission is delayed. The PC receives the result 2 seconds after the user completes the test.
 
   - type: textarea
     id: desired-change
     attributes:
       label: Desired change
       description: Explain how you would like the existing functionality to change.
+      placeholder: |
+        Example:
+        The PC should receive real-time data within 0.1 seconds.
 
   - type: textarea
     id: additional-information
